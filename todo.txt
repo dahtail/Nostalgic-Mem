@@ -1,0 +1,5 @@
+Urgent To-do:
+- Add needed stuff to compile both from visual studio, visual studio code via Make or CMake using gcc / clang, etc...
+- Add CLI Input stuff, maybe add a temporal class that has some very basic and rough functionality to test stuff while the real CLI is being worked on
+- Finish ProcScanner.h
+
