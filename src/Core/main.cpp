@@ -1,6 +1,7 @@
 #include <iostream>
 #include "../Utils/DebugPriv.h"
-#include "../Process/ProcScanner.h"
+// #include "../Process/ProcScanner.h"
+#include "../CLI/DebugCLI.h"
 
 int main()
 {
@@ -10,7 +11,11 @@ int main()
 	/* All the input stuff goes here */
 	/* Lil reminder for the input cli, PLEASE remember to clean up all ProcScanner instances created */
 
+	NostalgicMem::DebugCLI* debug_cli = new NostalgicMem::DebugCLI();
 
+	debug_cli->Menu();
+
+	delete debug_cli;
 
 	return 0;
 }
