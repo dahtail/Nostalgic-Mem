@@ -73,21 +73,29 @@ void NostalgicMem::DebugCLI::Menu()
 					case 0:
 					{
 						std::cout << "\n\n\nScanning 678657...";
+                        // just stopping is_running cuz it's a test
+                        is_running = false;
 						Sleep(1000);
 					} break;
 					case 1:
 					{
 						std::cout << "\n\n\nScanning blabla.exe...";
+                        // just stopping is_running cuz it's a test
+                        is_running = false;
 						Sleep(1000);
 					} break;
 					case 2:
 					{
 						std::cout << "\n\n\nScanning asdasd (window)...";
+                        // just stopping is_running cuz it's a test
+                        is_running = false;
 						Sleep(1000);
 					} break;
 				}
 				break;
             }
+            // This shit save us 🧀
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
         Sleep(150);
     }
