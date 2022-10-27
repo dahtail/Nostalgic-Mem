@@ -1,5 +1,6 @@
 #include <iostream>
 #include <thread>
+#include <string>
 #include <Windows.h>
 
 #include "DebugCLI.h"
@@ -18,42 +19,76 @@ NostalgicMem::DebugCLI::~DebugCLI()
 
 void NostalgicMem::DebugCLI::Menu()
 {
-    system("cls");
-    while (is_running)
+    std::string Menu[3] = { "1. Select the process (using pid)",
+                            "2. Select the process (using name)",
+                            "3. Select the process (using window name)"};
+    int pointer = 0;
+
+    while(is_running)
     {
-        int opt;
+        system("cls");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+        std::cout << "==================================" << std::endl;
+        std::cout << " Nostalgic Memory Scanner (Debug)" << std::endl;
+        std::cout << "==================================\n" << std::endl;
 
-        std::cout << "\t\t\t\t\t======================================\t\t\t\t\t" << std::endl;
-        std::cout << "\t\t\t\t\t Nostalgic Memory Scanner (Debug)\t\t\t\t\t" << std::endl;
-        std::cout << "\t\t\t\t\t======================================\n\t\t\t\t\t" << std::endl;
-        
-        std::cout << "\t\t\t\t\t 1. Select the process (using pid)\n\t\t\t\t\t" << std::endl;
-        std::cout << "\t\t\t\t\t 2. Select the process (using name)\n\t\t\t\t\t" << std::endl;
-        std::cout << "\t\t\t\t\t 3. Exit\n\t\t\t\t\t" << std::endl;
-
-        std::cin >> opt;
-        
-        switch (opt)
+        for (int i = 0; i < 3; ++i)
         {
-        case 1:
-            std::cout << "test" << std::endl;
-            is_running = false;
-            system("cls");
-            break;
-        case 2:
-            std::cout << "test2" << std::endl;
-            is_running = false;
-            system("cls");
-            break;
-        case 3:
-            std::cout << "Leaving... " << std::endl;
-            is_running = false;
-            Sleep(1000); // 1 second
-            system("cls");
-        default:
-            break;
+            if (i == pointer)
+            {
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+                std::cout << Menu[i] << std::endl;
+            }
+            else
+            {
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+                std::cout << Menu[i] << std::endl;
+            }
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        while (true)
+        {
+            if (GetAsyncKeyState(VK_UP) != 0)
+            {
+                pointer -= 1;
+                if (pointer == -1)
+                {
+                    pointer = 2;
+                }
+                break;
+            }
+            else if (GetAsyncKeyState(VK_DOWN) != 0)
+            {
+                pointer += 1;
+                if (pointer == 4)
+                {
+                    pointer = 0;
+                }
+                break;
+            }
+            else if (GetAsyncKeyState(VK_RETURN) != 0)
+            {
+                switch (pointer)
+				{
+					case 0:
+					{
+						std::cout << "\n\n\nScanning 678657...";
+						Sleep(1000);
+					} break;
+					case 1:
+					{
+						std::cout << "\n\n\nScanning blabla.exe...";
+						Sleep(1000);
+					} break;
+					case 2:
+					{
+						std::cout << "\n\n\nScanning asdasd (window)...";
+						Sleep(1000);
+					} break;
+				}
+				break;
+            }
+        }
+        Sleep(150);
     }
 }
