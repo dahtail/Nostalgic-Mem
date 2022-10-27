@@ -12,7 +12,7 @@ namespace NostalgicMem
 
 	public:
         DebugCLI();
-		~DebugCLI();
+	~DebugCLI();
         void Menu();
 	};
 
