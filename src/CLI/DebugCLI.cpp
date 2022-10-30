@@ -19,9 +19,10 @@ NostalgicMem::DebugCLI::~DebugCLI()
 
 void NostalgicMem::DebugCLI::Menu()
 {
-    std::string Menu[3] = { "1. Select the process (using pid)",
+    std::string Menu[4] = { "1. Select the process (using pid)",
                             "2. Select the process (using name)",
-                            "3. Select the process (using window name)"};
+                            "3. Select the process (using window name)",
+                            "4. Exit."};
     int pointer = 0;
 
     while(is_running)
@@ -32,7 +33,7 @@ void NostalgicMem::DebugCLI::Menu()
         std::cout << " Nostalgic Memory Scanner (Debug)" << std::endl;
         std::cout << "==================================\n" << std::endl;
 
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < 4; ++i)
         {
             if (i == pointer)
             {
@@ -73,30 +74,36 @@ void NostalgicMem::DebugCLI::Menu()
 					case 0:
 					{
 						std::cout << "\n\n\nScanning 678657...";
-                       				 // just stopping is_running cuz it's a test
-                        			is_running = false;
+                       	// just stopping is_running cuz it's a test
+                        is_running = false;
 						Sleep(1000);
 					} break;
 					case 1:
 					{
 						std::cout << "\n\n\nScanning blabla.exe...";
-                        			// just stopping is_running cuz it's a test
-                        			is_running = false;
+                        // just stopping is_running cuz it's a test
+                        is_running = false;
 						Sleep(1000);
 					} break;
 					case 2:
 					{
 						std::cout << "\n\n\nScanning asdasd (window)...";
-                        			// just stopping is_running cuz it's a test
-                        			is_running = false;
+                        // just stopping is_running cuz it's a test
+                        is_running = false;
 						Sleep(1000);
 					} break;
+                    case 3:
+                    {
+                        std::cout << "Leaving...";
+                        is_running = false;
+                        Sleep(1000);
+                    } break;
 				}
 				break;
             }
             // This shit save us 🧀
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
-        Sleep(150);
+        Sleep(100);
     }
 }

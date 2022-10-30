@@ -25,40 +25,40 @@ NostalgicMem::ProcScanner::~ProcScanner()
 
 std::vector<DWORD> NostalgicMem::ProcScanner::Scan(std::vector<DWORD> last_scan, INT8 value)
 {
-	//todo
+	//TODO
 }
 
 std::vector<DWORD> NostalgicMem::ProcScanner::Scan(std::vector<DWORD> last_scan, INT16 value)
 {
-	//todo
+	//TODO
 }
 
 std::vector<DWORD> NostalgicMem::ProcScanner::Scan(std::vector<DWORD> last_scan, INT32 value)
 {
-	//todo
+	//TODO
 }
 
 std::vector<DWORD> NostalgicMem::ProcScanner::Scan(std::vector<DWORD> last_scan, INT64 value)
 {
-	//todo
+	//TODO
 }
 
 std::vector<DWORD> NostalgicMem::ProcScanner::Scan(std::vector<DWORD> last_scan, std::string value)
 {
-	//todo
+	//TODO
 }
 
 std::vector<DWORD> NostalgicMem::ProcScanner::Scan(std::vector<DWORD> last_scan, const char* value)
 {
-	//todo
+	//TODO
 }
 
 std::vector<DWORD> NostalgicMem::ProcScanner::Scan(std::vector<DWORD> last_scan, double value)
 {
-	//todo
+	//TODO
 }
 
 std::vector<DWORD> NostalgicMem::ProcScanner::Scan(std::vector<DWORD> last_scan, float value) 
 {
-	//todo
+	//TODO
 }
