@@ -53,3 +53,57 @@ DWORD NostalgicMem::FindProcessByName(std::string proc_name)
 
     return result_pid;
 }
+
+DWORD NostalgicMem::FindProcessByWindowName(const char* window_name)
+{
+    HWND hwnd = FindWindow(0, (LPCWSTR)window_name);
+    if (hwnd == 0)
+    {
+        MessageBox(0, L"Error cannot find window", L"ERROR", MB_OK | MB_ICONERROR);
+    }
+    else
+    {
+        DWORD result_pid;
+        GetWindowThreadProcessId(hwnd, &result_pid);
+        HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, result_pid);
+
+        if (!hProcess)
+        {
+            MessageBox(0, L"Could not open the process!", L"ERROR", MB_OK | MB_ICONERROR);
+            return 0;
+        }
+        else
+        {
+            CloseHandle(hProcess);
+            return result_pid;
+        }
+    }
+    return 0;
+}
+
+DWORD NostalgicMem::FindProcessByWindowName(std::string window_name)
+{
+    HWND hwnd = FindWindow(0, (LPCWSTR)window_name.c_str());
+    if (hwnd == 0)
+    {
+        MessageBoxA(0, "Error cannot find window", "ERROR", MB_OK | MB_ICONERROR);
+    }
+    else
+    {
+        DWORD result_pid;
+        GetWindowThreadProcessId(hwnd, &result_pid);
+        HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, result_pid);
+
+        if (!hProcess)
+        {
+            MessageBox(0, L"Could not open the process!", L"ERROR", MB_OK | MB_ICONERROR);
+            return 0;
+        }
+        else
+        {
+            CloseHandle(hProcess);
+            return result_pid;
+        }
+    }
+    return 0;
+}

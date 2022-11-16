@@ -10,6 +10,8 @@ namespace NostalgicMem
 {
 	DWORD FindProcessByName(const char* proc_name);
 	DWORD FindProcessByName(std::string proc_name);
+	DWORD FindProcessByWindowName(const char* window_name);
+	DWORD FindProcessByWindowName(std::string window_name);
 }
 
 #endif
