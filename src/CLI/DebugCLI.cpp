@@ -102,7 +102,8 @@ void NostalgicMem::DebugCLI::Menu()
 				break;
             }
             // This shit save us 🧀
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+	    // Causes nightmares to the compiler, temporally disabled :)
+            //std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
         Sleep(100);
     }
