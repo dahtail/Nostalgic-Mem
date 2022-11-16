@@ -56,10 +56,10 @@ DWORD NostalgicMem::FindProcessByName(std::string proc_name)
 
 DWORD NostalgicMem::FindProcessByWindowName(const char* window_name)
 {
-    HWND hwnd = FindWindow(0, (LPCWSTR)window_name);
+    HWND hwnd = FindWindowA(0, (LPCSTR)window_name);
     if (hwnd == 0)
     {
-        MessageBox(0, L"Error cannot find window", L"ERROR", MB_OK | MB_ICONERROR);
+        MessageBoxA(0, "Error cannot find window", "ERROR", MB_OK | MB_ICONERROR);
     }
     else
     {
@@ -69,7 +69,7 @@ DWORD NostalgicMem::FindProcessByWindowName(const char* window_name)
 
         if (!hProcess)
         {
-            MessageBox(0, L"Could not open the process!", L"ERROR", MB_OK | MB_ICONERROR);
+            MessageBoxA(0, "Could not open the process!", "ERROR", MB_OK | MB_ICONERROR);
             return 0;
         }
         else
@@ -83,7 +83,7 @@ DWORD NostalgicMem::FindProcessByWindowName(const char* window_name)
 
 DWORD NostalgicMem::FindProcessByWindowName(std::string window_name)
 {
-    HWND hwnd = FindWindow(0, (LPCWSTR)window_name.c_str());
+    HWND hwnd = FindWindowA(0, (LPCSTR)window_name.c_str());
     if (hwnd == 0)
     {
         MessageBoxA(0, "Error cannot find window", "ERROR", MB_OK | MB_ICONERROR);
@@ -96,7 +96,7 @@ DWORD NostalgicMem::FindProcessByWindowName(std::string window_name)
 
         if (!hProcess)
         {
-            MessageBox(0, L"Could not open the process!", L"ERROR", MB_OK | MB_ICONERROR);
+            MessageBoxA(0, "Could not open the process!", "ERROR", MB_OK | MB_ICONERROR);
             return 0;
         }
         else

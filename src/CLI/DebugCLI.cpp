@@ -3,6 +3,8 @@
 #include <string>
 #include <Windows.h>
 
+#include "../Process/ProcScanner.h"
+#include "../Utils/FindProcess.h"
 #include "DebugCLI.h"
 
 
@@ -87,10 +89,15 @@ void NostalgicMem::DebugCLI::Menu()
 					} break;
 					case 2:
 					{
-						std::cout << "\n\n\nScanning asdasd (window)...";
+                        std::string window_name;
+						std::cout << "Enter the window name: "; std::cin >> window_name;
+                        DWORD process_id = NostalgicMem::FindProcessByWindowName(window_name);
+                        std::cout << process_id;
+                        NostalgicMem::ProcScanner* proc_scanner = new NostalgicMem::ProcScanner(process_id);
                         // just stopping is_running cuz it's a test
                         is_running = false;
 						Sleep(1000);
+                        delete proc_scanner;
 					} break;
                     case 3:
                     {
