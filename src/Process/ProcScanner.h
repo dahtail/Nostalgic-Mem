@@ -1,6 +1,8 @@
 #ifndef __PROCSCANNER_H__
 #define __PROCSCANNER_H__
 
+#define size 0x00000808
+
 #include <Windows.h>
 #include "../Utils/FindProcess.h"
 #include <string>
@@ -20,20 +22,17 @@ namespace NostalgicMem
 		ProcScanner(std::string process_name);
 		~ProcScanner();
 
-		/* How we will scan:
-		 * Instead of making some kind of struct that stores each value and the address we found the value in, we will simply re-read all the time and compare each value to the wanted value
-		 * If last_scan is empty, assume it's a new scan, if last_scan is not empty, only scan those addresses and compare it to the wanted value
-		 */
+		template <typename T>
+    	constexpr const T Read(const std::uintptr_t& address) const noexcept;
 
-		std::vector<DWORD> Scan(std::vector<DWORD> last_scan, INT8 value);
-		std::vector<DWORD> Scan(std::vector<DWORD> last_scan, INT16 value);
-		std::vector<DWORD> Scan(std::vector<DWORD> last_scan, INT32 value);
-		std::vector<DWORD> Scan(std::vector<DWORD> last_scan, INT64 value);
-		std::vector<DWORD> Scan(std::vector<DWORD> last_scan, std::string value);
-		std::vector<DWORD> Scan(std::vector<DWORD> last_scan, const char* value);
-		std::vector<DWORD> Scan(std::vector<DWORD> last_scan, double value);
-		std::vector<DWORD> Scan(std::vector<DWORD> last_scan, float value);
+		template <typename T>
+    	constexpr const std::vector<DWORD> NostalgicMem::ProcScanner::Search(T wanted_val) const noexcept
 
+		template <typename T>
+    	constexpr const std::vector<DWORD> NostalgicMem::ProcScanner::SearchNext(T wanted_val, std::vector<DWORD> lastScan) const noexcept
+
+		template <typename T>
+    	constexpr void Write(const std::uintptr_t& address, const T& value) const noexcept;
 	};
 
 }
